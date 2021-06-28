@@ -171,8 +171,8 @@ public class GemifyMojo extends AbstractGemMojo {
             // install them without dependency check
             final Script script = this.factory.newScriptFromJRubyJar("gem")
                     .addArg("install")
-                    .addArg((installRDoc ? "--" : "--no-") + "rdoc")
-                    .addArg((installRI ? "--" : "--no-") + "ri")
+                    .addArg("--backtrace")
+                    .addArg((installRDoc ? "--" : "--no-") + "document")
                     .addArg("--ignore-dependencies")
                     .addArg("-l");
             for (final String gem : gems.keySet()) {
