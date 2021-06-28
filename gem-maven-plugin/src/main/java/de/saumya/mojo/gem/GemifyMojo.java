@@ -329,6 +329,8 @@ public class GemifyMojo extends AbstractGemMojo {
         getLog().debug("<gemify> B");
         this.factory.newScriptFromJRubyJar("gem")
                 .addArg("build")
+                .addArg("--backtrace")
+                .addArg("--verbose")
                 .addArg(gemSpec)
                 .executeIn(gemDir);
         getLog().debug("<gemify> C");

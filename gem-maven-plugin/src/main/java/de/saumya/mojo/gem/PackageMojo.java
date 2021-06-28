@@ -180,6 +180,8 @@ public class PackageMojo extends AbstractGemMojo {
                 // now we have a gemspec file - either found or given
                 this.factory.newScriptFromJRubyJar("gem")
                         .addArg("build", this.gemspec)
+                        .addArg("--backtrace")
+                        .addArg("--verbose")
                         .executeIn(launchDirectory());
 
                 File newPom = new File( this.gemspec.getParentFile(), "pom." + this.gemspec.getName() + ".xml");
@@ -389,6 +391,8 @@ public class PackageMojo extends AbstractGemMojo {
 
         this.factory.newScriptFromJRubyJar("gem")
                 .addArg("build", gemSpec)
+                .addArg("--backtrace")
+                .addArg("--verbose")
                 .executeIn(gemDir);
 
         if ((!localGemspec.exists() || !FileUtils.contentEquals(localGemspec,
